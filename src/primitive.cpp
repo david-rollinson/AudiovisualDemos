@@ -8,11 +8,14 @@ Prmtv::Prmtv(){
 void Prmtv::setup(int x, int y, int z, int _rad, int _res){
     /*Set radius and resolution.*/
     sphr.set(_rad, _res);
+    color = ofColor(255,255,255,255);
     /*Set position.*/
     sphr.setPosition(x, y, z);
+    
 }
 
 void Prmtv::draw(){
+    ofSetColor(color);
     sphr.drawWireframe();
 }
 

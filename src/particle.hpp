@@ -16,12 +16,13 @@ class Particle {
     
     bool isAlive;
     
-    ofIcoSpherePrimitive sphr;
-        
     protected:
         
     private:
+    ofIcoSpherePrimitive sphr;
     ofVec3f pos, vel;
     float lifespan;
+    float _angle;
+    float _alpha;
 };
 #endif /* particle_hpp */

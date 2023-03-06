@@ -23,6 +23,8 @@ void Particle::setup(){
     vel = randomVel(10, 50); /*Create the particle's initial speed and direction.*/
     lifespan = 100; /*Each particle can only survive for 100 'frames'/loops of the update function.*/
     isAlive = true; /*Tell the rest of the program that the particle is alive.*/
+    _angle = 1; /*Rotation angle per frame for each primitive*/
+    _alpha = 255;
 }
 
 void Particle::update(){
@@ -30,6 +32,7 @@ void Particle::update(){
         lifespan--; /*Decrement the particle's lifespan every loop.*/
         float timeAlive = ofMap(lifespan, 0, 100, 0, 1);
         pos += vel * timeAlive; /*Slow down the particle as it gets older.*/
+        _alpha = 255 * timeAlive; /*Fade the particle as it gets older.*/
         
         if(lifespan == 0){
             isAlive = false; /*When lifespan reaches zero, pronounce the particle dead.*/
@@ -39,12 +42,16 @@ void Particle::update(){
 
 void Particle::draw(){
     if(isAlive){
-        ofColor color = ofColor(255,255,255);
+        ofEnableAlphaBlending();
+        ofColor color = ofColor(255,255,255,_alpha);
         ofSetColor(color);
         //ofDrawCircle(pos, 10); /*Draw the particle to the screen.*/
         sphr.set(200, 2);
         sphr.setPosition(pos);
+        sphr.rotateDeg(_angle, ofVec3f(0, 1, 0));
+        sphr.draw();
         sphr.drawWireframe();
+        ofDisableAlphaBlending();
     }
 }
 

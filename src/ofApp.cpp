@@ -104,8 +104,8 @@ void ofApp::draw(){
     gui.draw();
     
     /*Set colors.*/
-    ofSetBackgroundColor(0,0,0);
-    ofSetColor(255, 255, 255);
+    ofSetBackgroundColor(0,0,0,0);
+    ofSetColor(255, 255, 255, 255);
     ofFill();
     
     /*Draw a circle that graphically responds to the fft frequencies.*/

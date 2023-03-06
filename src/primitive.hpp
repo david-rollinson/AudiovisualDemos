@@ -18,6 +18,7 @@ class Prmtv
     
     private:
     ofIcoSpherePrimitive sphr;
+    ofColor color;
     
 };
 #endif
